@@ -1,0 +1,10 @@
+Package: adaStump
+Type: Package
+Title: Fitting adaBoost model with Stumps as base learners
+Version: 1.0
+Date: 2016-03-25
+Author: Hernan Resnizky
+Maintainer: Hernan Resnizky <hernan.resnizky@gmail.com>
+Description: Optimised implementation of AdaBoosting with Stumps as base learners
+Depends: ada
+License: GPL
