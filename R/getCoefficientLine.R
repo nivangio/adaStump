@@ -1,3 +1,7 @@
+#' Internal - Get individual tree output from stump.frame object
+#' @keywords internal
+#' @export
+ 
 getCoefficientLine <-
 function(var,condition,value,probT,probF,alpha=NULL,newdata,default,type){
   

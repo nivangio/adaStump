@@ -1,3 +1,35 @@
+#' Predict from a \code{prunedadaStump} object 
+#' 
+#' 
+#' @param stump.model object of class \code{prunedadaStump}
+#' @param newdata Data to be fit
+#' 
+#' @return 
+#' A vector of length \code{nrow(newdata)} expressing the probability of ocurrence of the event modelled.
+#' 
+#' @examples
+#' 
+#' 
+#' #Load Iris
+#' data(iris)
+#' 
+#' #Create Variable is Iris as numerical
+#' iris$isSetosa <- as.numeric(iris$Species == "setosa")
+#' 
+#' #Split sample in 70 train - 30 test
+#' train.ind <- sample(nrow(iris), nrow(iris) * 0.7)
+#' 
+#' #Train model. For obvious reasons, Species variable is not included in the fit
+#' fit <- adaStump(isSetosa ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width, iris[train.ind,], 
+#'                 type = "discrete", iter = 10, nu = 0.05, bag.frac = 0.6)
+#'                 
+#' #Prune Tree and predict
+#' 
+#' fit_pruned <- pruneTree(fit)
+#' predict(fit_pruned,iris[-train.ind,])
+#' 
+#' @export
+
 predict.prunedadaStump <- function(stump.model, newdata){
   
   ret <- predict.adaStump(stump.model,newdata)

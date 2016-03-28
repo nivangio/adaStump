@@ -1,3 +1,7 @@
+#' Internal - Transform tree value and multiply with alpha according its type
+#' @keywords internal
+#' @export
+
 getAlphaProbability <- function(tree.value, alpha, type){
   
   

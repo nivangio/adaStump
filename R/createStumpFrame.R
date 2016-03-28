@@ -1,3 +1,10 @@
+#' Internal - Transfrom ada object into data frame 
+#' 
+#' @param ada.model model of class "ada" to be pruned
+#' @return data.frame containing the stumps information
+#' @keywords internal
+#' @export
+ 
 createStumpFrame <-
 function(ada.model){
   
