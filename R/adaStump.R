@@ -1,12 +1,11 @@
-adaStump <-
-function(formula, data, type, iter){
+adaStump <- function(formula, data, ...){
   
-  args <- list(formula = formula,data = data,type = type,iter = iter, control = rpart.control(maxdepth=1,cp=-1,minsplit=0,xval=0))
+  args <- list(formula = formula, data = data, control = rpart.control(maxdepth=1,cp=-1,minsplit=0,xval=0), ...)
   
   model <- do.call("ada", args)
   
   ret <- createStumpFrame(model)
-  ret <- list(model = ret, type = type)
+  ret <- list(model = ret, type = model$model$lossObj$type)
   class(ret) <- "adaStump"
   return(ret)
   

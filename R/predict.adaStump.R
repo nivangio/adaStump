@@ -1,7 +1,7 @@
 predict.adaStump <-
 function(stump.model, newdata, n.iter = nrow(stump.model$model)){
   
-  if(class(stump.model) != "adaStump") stop("Not an adaStump Model")
+  if(!class(stump.model) %in% c("adaStump","prunedadaStump")) stop("Not an adaStump or prunedadaStump Model")
   
   if(nrow(stump.model$model) == 0) return(rep(NA,nrow(newdata)))
   
@@ -16,7 +16,7 @@ function(stump.model, newdata, n.iter = nrow(stump.model$model)){
     args.st$newdata <- newdata_reduced
     
     args.st$value <- unlist(strsplit(args.st$value, split = ","))
-    if(all(grepl("^[0-9\\.]+$",args.st$value))) args.st$value <- as.numeric(args.st$value)
+    if(all(grepl("^[0-9\\.]+$",args.st$value))) args.st$value <- as.double(args.st$value)
     
     args.st$type <- stump.model$type
     
